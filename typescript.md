@@ -815,7 +815,7 @@ console.log(User.name);
 ```
 
 ## コンパイル
-```
+```shell
 tsc main.ts -m commonjs
 ```
 `-m`オプションで外部モジュールを使用できるようにする。今回は`CommonJS`を指定
@@ -843,7 +843,7 @@ console.log(User.name);
 ```
 
 ## コンパイル
-```
+```shell
 tsc main.ts -m amd
 ```
 
