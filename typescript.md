@@ -37,7 +37,7 @@ console.log('hello world.');
 ```
 将来TSを使用しなくなったとしてもJSファイルをメンテナンスしていけばいいため、乗り換えが比較的コストが低い
 
-実行結果
+## 実行結果
 ```
 $ node main.js
 hello world.
@@ -54,7 +54,7 @@ TS -> 静的型付け (変数定義したのちに異なる型のデータを代
 var x = 10;
 x = "hello";
 ```
-エラー内容
+## エラー内容
 ```
 main.ts:3:1 - error TS2322: Type '"hello"' is not assignable to type 'number'.
 
@@ -110,7 +110,7 @@ enum Signal {
 }
 ```
 
-サンプルコード
+## サンプルコード
 ```
 // 部分的に番号を振っていると、それ以前は0からの連番、その番号以降はインクリメントされていく
 enum Signal {
@@ -128,7 +128,7 @@ var result: Signal;
 console.log(Signal.Green);
 ```
 
-実行結果
+## 実行結果
 ```
 tsc main.ts
 node main.js
@@ -191,7 +191,7 @@ console.log(add(1, 2));
 function add(a?: number, b: number): number { // 不可能
 ```
 
-サンプルコード
+## サンプルコード
 ```
 function add(a: number, b?: number): number {
     if (b) {
@@ -205,7 +205,7 @@ console.log(add(5, 3));
 console.log(add(5));
 ```
 
-実行結果
+## 実行結果
 ```
 $ node main.js
 8
@@ -226,7 +226,7 @@ console.log(add(5, 3));
 console.log(add(5));
 ```
 
-実行結果
+## 実行結果
 ```
 $ node main.js
 8
@@ -256,7 +256,7 @@ console.log(add(3,5));
 # オーバーロードを使ってみよう
 TSはJavaのようにオーバーロードの機能が備わっている
 
-サンプルコード(同名＆引数の数も同一の関数を用意して引数の型で処理を変更する)
+## サンプルコード(同名＆引数の数も同一の関数を用意して引数の型で処理を変更する)
 ```
 function add(a: number, b: number): number;
 function add(a: string, b: string): number;
@@ -414,7 +414,7 @@ hi! i am TOM
 TSにおけるクラス継承の方法はJavaと同じ
 また、protected 修飾子に関しても、仕様はJavaと同じで子クラスでアクセス可能である
 
-サンプルコード
+## サンプルコード
 ```
 class User {
     constructor(protected _name: string) {}
@@ -447,7 +447,7 @@ class User {
  bob.sayHi();
 ```
 
-実行結果
+## 実行結果
 ```
 $ tsc main.ts -t ES5; node main.js
 my age: 23
@@ -459,7 +459,7 @@ my name: Bob
 静的メンバとはインスタンス単位で保持しているメンバではなくクラス単位で保持しているメンバのことを指す
 
 ## 静的メンバ(フィールド)
-サンプルコード. 以下はインスタンスが何個生成されたかを静的メンバであるcountフィールドで保持している。
+## サンプルコード. 以下はインスタンスが何個生成されたかを静的メンバであるcountフィールドで保持している。
 ```
 class User {
     constructor(protected _name: string) {
@@ -488,7 +488,7 @@ class User {
  console.log("current count: " + User.count);
 ```
 
-実行結果
+## 実行結果
 ```
 tsc main.ts -t ES5; node main.js
 hi! i am Bob
@@ -499,7 +499,7 @@ current count: 2
 
 ## 静的メンバ(メソッド)
 
-サンプルコード
+## サンプルコード
 ```
 class User {
     constructor(protected _name: string) {
@@ -525,7 +525,7 @@ class User {
  User.showDescription()
 ```
 
-実行結果
+## 実行結果
 ```
 tsc main.ts -t ES5; node main.js
 this class is about User
@@ -535,7 +535,7 @@ this class is about User
 
 コードを書いていく上で自分で定義した型を使用したい場合はインンターフェースを利用する
 
-サンプルコード
+## サンプルコード
 ```
 // 構造的部分型
  interface Result {
@@ -557,9 +557,9 @@ console.log(getTotal(result));
 ```
 
 getTotal関数の引数はResultという自作したインターフェースを使用している。またTSのインターフェースは構造的部分型という手法を採用しており、ある型のプロパティを持ってさえすればその型であるとみなす仕組みが存在する。
-サンプルコードでresultにはaとbに加えインターフェースでは定義されていないcというプロパティが存在しているが、getTotal関数の引数にしても問題なく動作する。
+## サンプルコードでresultにはaとbに加えインターフェースでは定義されていないcというプロパティが存在しているが、getTotal関数の引数にしても問題なく動作する。
 
-実行結果
+## 実行結果
 ```
 $ tsc main.ts -t ES5; node main.js
 90
@@ -570,7 +570,7 @@ $ tsc main.ts -t ES5; node main.js
 TSにおいてクラスは一つしか継承できないが、インターフェースは複数継承することが可能。
 また、インターフェースのプロパティをオプションにすることも可能で、そうする場合はプロパティに?をつける。
 
-サンプルコード
+## サンプルコード
 ```
  interface SpringResult {
      a: number
@@ -595,13 +595,13 @@ TSにおいてクラスは一つしか継承できないが、インターフェ
  var result = {
      a: 32,
      b: 58,
-     final: 82 // finalが定義されていないと実行結果は90となる
+     final: 82 // finalが定義されていないと## 実行結果は90となる
  };
 
 console.log(getTotal(result));
 ```
 
-実行結果
+## 実行結果
 ```
 $ tsc main.ts -t ES5; node main.js
 172
@@ -612,7 +612,7 @@ $ tsc main.ts -t ES5; node main.js
 Javaと仕様は同じで、インターフェースを実装する場合はかならず定義されているメソッドを実装する必要がある。
 インターフェースを複数実装する場合はJavaと同じくカンマ区切りで列挙する。
 
-サンプルコード
+## サンプルコード
 ```
 interface GameUser {
     score: number;
@@ -643,8 +643,215 @@ var bob = new User('bob');
 bob.showScore();
 ```
 
-実行結果
+## 実行結果
 ```
 $ tsc main.ts -t ES5; node main.js
 0
+```
+
+# ジェネリクスを使ってみよう
+
+同じ処理だが、引数の型が異なる関数をまとめて定義したいとなった時に、ジェネリクスを使用すると実現できる。
+Any型であらゆる型に対応できればいいのではないかと一見思われるが、ジェネリクスを使用すると返り値の型を指定できるので扱いやすいというメリットが存在する。
+
+## サンプルコード
+```
+function getArray<T>(value: T): T[] {
+   return [value, value, value];
+}
+
+console.log(getArray<number>(3));
+console.log(getArray<string>("Hello"));
+```
+
+## 実行結果
+``` 
+[ 3, 3, 3 ]
+[ 'Hello', 'Hello', 'Hello' ]
+```
+
+# ジェネリクスに制約を与えてみよう
+
+クラスのメンバにもジェネリクスを使用することができる
+
+## サンプルコード
+```
+class MyData<T> {
+   constructor(public value: T) {}
+   getArray(): T[] {
+      return [this.value, this.value, this.value];
+   }
+}
+
+var v1 = new MyData<string>("hello");
+console.log(v1.getArray());
+var v2 = new MyData<number>(234);
+console.log(v2.getArray());
+```
+
+## 実行結果
+```
+[ 'hello', 'hello', 'hello' ]
+[ 234, 234, 234 ]
+```
+
+またジェネリクスに制約を課すことも可能で、例えば特定のフィールドを持っていることを強制したりできる
+
+## サンプルコード
+```
+interface Result {
+   a: number,
+   b: number
+}
+
+interface FinalResult {
+   a: number,
+   b: number,
+   c: number
+}
+
+class MyData<T extends Result> {
+   constructor(public value: T) {}
+   getArray(): T[] {
+      return [this.value, this.value, this.value];
+   }
+}
+
+var v3 = new MyData<Result>({a: 32, b: 16});
+console.log(v3.getArray());
+
+var v4 = new MyData<FinalResult>({a: 32, b: 16, c: 23});
+console.log(v4.getArray());
+```
+
+ここでは `new MyData<string>` でインスタンスを生成しようとするとエラーが発生する。
+
+## エラー内容
+```
+main.ts:13:21 - error TS2344: Type 'string' does not satisfy the constraint 'Result'.
+
+13 var v1 = new MyData<string>("hello");
+```
+
+継承元の`Result`や`Result`のメンバを使用している`FinalResult`を型に指定するとインスタンスを精製することができる。
+
+## 実行結果
+```
+[ { a: 32, b: 16 }, { a: 32, b: 16 }, { a: 32, b: 16 } ]
+[ { a: 32, b: 16, c: 23 },
+  { a: 32, b: 16, c: 23 },
+  { a: 32, b: 16, c: 23 } ]
+```
+
+# 内部モジュールを使ってみよう
+
+モジュールを使用する場合は以下のように記述する。
+
+## サンプルコード
+```
+module UserModule {
+   export var name = "empenguin1186" // 1
+   export module AddressModule {
+      export var zip = "111-1111";
+   }
+}
+
+console.log(UserModule.AddressModule.zip);
+
+import addr = UserModule.AddressModule; // 2
+```
+
+1. コードでモジュールを使用したい場合は`export`修飾子を付加する。
+2. モジュール名は短縮することが可能
+
+## 実行結果
+```
+tsc user.ts; node user.js
+111-1111
+```
+
+また、外部ファイルのモジュールを使用することも可能
+
+## サンプルコード
+```
+/// <reference path="./user.ts" /> // 1
+
+console.log(UserModule.name);
+console.log(addr.zip);
+```
+
+1. /// <reference path="読み込みたいモジュールファイルのパス" /> で外部ファイルのモジュールを使用することができる
+
+## 実行結果
+```
+$ tsc main.ts --out all.js; node all.js // 1.
+111-1111 //user.ts の実行結果
+empenguin1186
+111-1111 //main.ts の実行結果
+```
+1. `tsc main.ts` のみでは`main.js`と`users.js`の複数のファイルが生成されてしまう。`--out`オプションをつけることにより`all.js`に`main.js`と`users.js`の内容をまとめる。
+
+# 外部モジュールを使ってみよう
+コンパイルのオプション出力形式を変更することが可能
+
+## 外部モジュールについて
+以下の記事がわかりやすい
+https://qiita.com/naoki_mochizuki/items/cc6ef57d35ba6a69117
+
+要は従来のJSにはプログラムを処理の単位で切り分け、それを外部ファイルとして保存し外部から読み込むことで可読性を向上させるモジュール機能が存在しなかった。そこでモジュール機能を使えるように新たに定義された仕様が`CommonJS`だったり`AMD`だったりする。
+TSではこの`CommonJS`と`AMD`の仕様に沿ったJSを生成することが可能
+
+まずはCommonJS
+
+## サンプルコード
+```: user_commonjs.ts
+export var name = "empenguin1186"
+```
+
+```: main.ts
+import User = require("./user_commonjs");
+
+console.log(User.name);
+```
+
+## コンパイル
+```
+tsc main.ts -m commonjs
+```
+`-m`オプションで外部モジュールを使用できるようにする。今回は`CommonJS`を指定
+
+## 生成されたコード
+```: user_commonjs.js
+"use strict";
+exports.__esModule = true;
+exports.name = "empenguin1186";
+```
+
+次にAMD
+外部モジュールのコードはCommonJSと同じ
+
+## サンプルコード
+
+```: user_amd.ts
+export var name = "empenguin1186"
+```
+
+```: main.ts
+import User = require("./user_amd");
+
+console.log(User.name);
+```
+
+## コンパイル
+```
+tsc main.ts -m amd
+```
+
+## 生成されたコード
+```: user_amd.js
+define(["require", "exports"], function (require, exports) {
+    "use strict";
+    exports.__esModule = true;
+    exports.name = "empenguin1186";
+});
 ```
