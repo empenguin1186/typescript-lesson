@@ -15,7 +15,7 @@ sudo npm install -g typescript
 拡張子 -> .ts
 
 main.ts
-```
+```TypeScript
 class User {
 
 }
@@ -27,7 +27,7 @@ console.log('hello world.');
 tsc main.ts
 ```
 main.js
-```
+```JavaScript
 var User = /** @class */ (function () {
     function User() {
     }
@@ -50,7 +50,7 @@ TS -> 静的型付け (変数定義したのちに異なる型のデータを代
 
 // 以下はJSでは問題なく動作するが静的型付け言語ではエラーが発生する
 
-```
+```TypeScript
 var x = 10;
 x = "hello";
 ```
@@ -72,27 +72,27 @@ Found 1 error.
 型の省略が可能
 
 以下は同義
-```
+```TypeScript
 var i: number = 10;
 var i = 10;
 ```
 
 以下はany型で定義(any は何の型でも入れられる)
-```
+```TypeScript
 var x;
 x = 10;
 x = "hello";
 ```
 
 配列の定義
-```
+```TypeScript
 var results: number[];
 results = [10, 5, 3];
 ```
 
 # 列挙型
 
-```
+```TypeScript
 Signal
 enum Signal {
     Red = 0,
@@ -101,7 +101,7 @@ enum Signal {
 }
 ```
 
-```
+```TypeScript
 何も設定していないと0からの連番となる
 enum Signal {
     Red, // 0
@@ -111,7 +111,7 @@ enum Signal {
 ```
 
 ## サンプルコード
-```
+```TypeScript
 // 部分的に番号を振っていると、それ以前は0からの連番、その番号以降はインクリメントされていく
 enum Signal {
     Red,
@@ -137,7 +137,7 @@ node main.js
 
 上記の(a) のenum に既存のBlueを追加するとコンパイルエラーが発生する
 
-```
+```TypeScript
 enum Signal {
     Red,
     Blue = 3,
@@ -168,7 +168,7 @@ Found 2 errors.
 
 # 関数
 function で関数を定義
-```
+```TypeScript
 function add(a: number, b: number): number {
     return a + b;
 }
@@ -179,7 +179,7 @@ console.log(add(1, 2));
 返り値が存在しない場合はvoid
 
 引数をオプションにしたい場合は変数の後ろに？をつける
-```
+```TypeScript
 function add(a: number, b?: number): number {
     return a + b;
 }
@@ -192,7 +192,7 @@ function add(a?: number, b: number): number { // 不可能
 ```
 
 ## サンプルコード
-```
+```TypeScript
 function add(a: number, b?: number): number {
     if (b) {
         return a + b;
@@ -213,7 +213,7 @@ $ node main.js
 ```
 
 関数の引数に初期値(デフォルト値) を使用することも可能
-```
+```TypeScript
 function add(a: number, b: number = 10): number {
     if (b) {
         return a + b;
@@ -238,7 +238,7 @@ $ node main.js
 関数式とは式のように関数をかけることができる機能でJSにも提供されている
 
 従来の関数式
-```
+```TypeScript
 var add = function(a: number, b: number): number {
     return a + b;
 }
@@ -247,7 +247,7 @@ console.log(add(3,5));
 ```
 
 TSではアロー関数というものを使ってもっと簡単にかける
-```
+```TypeScript
 var add = (a: number, b: number): number => a + b;
 
 console.log(add(3,5));
@@ -257,7 +257,7 @@ console.log(add(3,5));
 TSはJavaのようにオーバーロードの機能が備わっている
 
 ## サンプルコード(同名＆引数の数も同一の関数を用意して引数の型で処理を変更する)
-```
+```TypeScript
 function add(a: number, b: number): number;
 function add(a: string, b: string): number;
 
@@ -278,7 +278,7 @@ console.log(add("hello","world")) // hello world
 # クラスを使ってみよう
 
 クラスに関してはJavaっぽくかける
-```
+```TypeScript
 class User {
     
     public name: string;
@@ -307,7 +307,7 @@ hi! i am Tom
 
 また、フィールドとコンストラクタの定義を一括で行うことができる記法が存在する
 
-```
+```TypeScript
 class User {
    constructor(public name: string) {}
     sayHi(): void {
@@ -326,7 +326,7 @@ tom.sayHi();
 
 private をつけると直接そのフィールドを参照することができない
 
-```
+```TypeScript
 class User {
    constructor(public name: string) {}
     sayHi(): void {
@@ -358,7 +358,7 @@ privateのフィールドには頭にアンダースコアをつけるのが習�
 
 privateフィールドを使用するにはJavaのようにGetterとSetterを定義する
 
-```
+```TypeScript
 class User {
     constructor(private _name: string) {}
      sayHi(): void {
@@ -415,7 +415,7 @@ TSにおけるクラス継承の方法はJavaと同じ
 また、protected 修飾子に関しても、仕様はJavaと同じで子クラスでアクセス可能である
 
 ## サンプルコード
-```
+```TypeScript
 class User {
     constructor(protected _name: string) {}
      sayHi(): void {
@@ -460,7 +460,7 @@ my name: Bob
 
 ## 静的メンバ(フィールド)
 ## サンプルコード. 以下はインスタンスが何個生成されたかを静的メンバであるcountフィールドで保持している。
-```
+```TypeScript
 class User {
     constructor(protected _name: string) {
         User.count++;
@@ -500,7 +500,7 @@ current count: 2
 ## 静的メンバ(メソッド)
 
 ## サンプルコード
-```
+```TypeScript
 class User {
     constructor(protected _name: string) {
         User.count++;
@@ -536,7 +536,7 @@ this class is about User
 コードを書いていく上で自分で定義した型を使用したい場合はインンターフェースを利用する
 
 ## サンプルコード
-```
+```TypeScript
 // 構造的部分型
  interface Result {
      a: number,
@@ -571,7 +571,7 @@ TSにおいてクラスは一つしか継承できないが、インターフェ
 また、インターフェースのプロパティをオプションにすることも可能で、そうする場合はプロパティに?をつける。
 
 ## サンプルコード
-```
+```TypeScript
  interface SpringResult {
      a: number
  }
@@ -613,7 +613,7 @@ Javaと仕様は同じで、インターフェースを実装する場合はか�
 インターフェースを複数実装する場合はJavaと同じくカンマ区切りで列挙する。
 
 ## サンプルコード
-```
+```TypeScript
 interface GameUser {
     score: number;
     showScore(): void; // void型のメソッドshowScoreを実装することをクラスに強制する
@@ -655,7 +655,7 @@ $ tsc main.ts -t ES5; node main.js
 Any型であらゆる型に対応できればいいのではないかと一見思われるが、ジェネリクスを使用すると返り値の型を指定できるので扱いやすいというメリットが存在する。
 
 ## サンプルコード
-```
+```TypeScript
 function getArray<T>(value: T): T[] {
    return [value, value, value];
 }
@@ -675,7 +675,7 @@ console.log(getArray<string>("Hello"));
 クラスのメンバにもジェネリクスを使用することができる
 
 ## サンプルコード
-```
+```TypeScript
 class MyData<T> {
    constructor(public value: T) {}
    getArray(): T[] {
@@ -698,7 +698,7 @@ console.log(v2.getArray());
 またジェネリクスに制約を課すことも可能で、例えば特定のフィールドを持っていることを強制したりできる
 
 ## サンプルコード
-```
+```TypeScript
 interface Result {
    a: number,
    b: number
@@ -748,7 +748,7 @@ main.ts:13:21 - error TS2344: Type 'string' does not satisfy the constraint 'Res
 モジュールを使用する場合は以下のように記述する。
 
 ## サンプルコード
-```
+```TypeScript
 module UserModule {
    export var name = "empenguin1186" // 1
    export module AddressModule {
@@ -773,7 +773,7 @@ tsc user.ts; node user.js
 また、外部ファイルのモジュールを使用することも可能
 
 ## サンプルコード
-```
+```TypeScript
 /// <reference path="./user.ts" /> // 1
 
 console.log(UserModule.name);
@@ -804,11 +804,11 @@ TSではこの`CommonJS`と`AMD`の仕様に沿ったJSを生成することが�
 まずはCommonJS
 
 ## サンプルコード
-```: user_commonjs.ts
+```TypeScript
 export var name = "empenguin1186"
 ```
 
-```: main.ts
+```TypeScript
 import User = require("./user_commonjs");
 
 console.log(User.name);
@@ -821,7 +821,7 @@ tsc main.ts -m commonjs
 `-m`オプションで外部モジュールを使用できるようにする。今回は`CommonJS`を指定
 
 ## 生成されたコード
-```: user_commonjs.js
+```JavaScript
 "use strict";
 exports.__esModule = true;
 exports.name = "empenguin1186";
@@ -832,11 +832,11 @@ exports.name = "empenguin1186";
 
 ## サンプルコード
 
-```: user_amd.ts
+```TypeScript
 export var name = "empenguin1186"
 ```
 
-```: main.ts
+```TypeScript
 import User = require("./user_amd");
 
 console.log(User.name);
@@ -848,7 +848,7 @@ tsc main.ts -m amd
 ```
 
 ## 生成されたコード
-```: user_amd.js
+```JavaScript
 define(["require", "exports"], function (require, exports) {
     "use strict";
     exports.__esModule = true;
