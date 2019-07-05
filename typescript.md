@@ -896,3 +896,7 @@ tsc main.ts -t ES5 -m commonjs; node main.js
 26
 ```
 
+# NEXT ACTION
+
+TypeScript の QuickStart をやってみたい!
+https://www.typescriptlang.org/samples/
