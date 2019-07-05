@@ -859,7 +859,9 @@ define(["require", "exports"], function (require, exports) {
 # 外部モジュールでクラスを読み込む
 
 ## サンプルコード
-```TypeScript:user_commonjs.ts
+
+### user_commonjs.ts
+```TypeScript
 export class User {
     constructor(private _name: string, private _age: number) {
 
@@ -879,7 +881,8 @@ export class User {
 }
 ```
 
-```TypeScript:main.ts
+### main.ts
+```TypeScript
 import common = require("./user_commonjs");
 import User = common.User;
 
