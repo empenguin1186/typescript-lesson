@@ -1,3 +1,5 @@
-import User = require("./user_amd");
+import common = require("./user_commonjs");
+import User = common.User;
 
-console.log(User.name);
+var user = new User("empenguin1186", 26);
+console.log(user.age);

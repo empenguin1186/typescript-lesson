@@ -855,3 +855,41 @@ define(["require", "exports"], function (require, exports) {
     exports.name = "empenguin1186";
 });
 ```
+
+# 外部モジュールでクラスを読み込む
+
+## サンプルコード
+```TypeScript :user_commonjs.ts
+export class User {
+    constructor(private _name: string, private _age: number) {
+
+    }
+    get name(): string {
+        return this._name;
+    }
+    get age(): number {
+        return this._age;
+    }
+    set name(name: string) {
+        this._name = name;
+    }
+    set age(age: number) {
+        this._age = age;
+    }
+}
+```
+
+```TypeScript :main.ts
+import common = require("./user_commonjs");
+import User = common.User;
+
+var user = new User("empenguin1186", 26);
+console.log(user.age);
+```
+
+## 実行結果
+```
+tsc main.ts -t ES5 -m commonjs; node main.js
+26
+```
+

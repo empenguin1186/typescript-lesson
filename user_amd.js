@@ -1,5 +1,3 @@
-define(["require", "exports"], function (require, exports) {
-    "use strict";
-    exports.__esModule = true;
-    exports.name = "empenguin1186";
-});
+"use strict";
+exports.__esModule = true;
+exports.name = "empenguin1186";
